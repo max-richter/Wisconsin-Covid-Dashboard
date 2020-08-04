@@ -21,18 +21,57 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background: #17202e!important;
+}
+
+.dropdown-toggle {
+  background: #131924;
+}
+
+.dropdown-menu {         
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.navbar {
+  background: #131924;
+}
+
+.nav-width {
+    padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+.grid-card {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  height: calc(100%);
+}
+
+
+.row-styled {
+  padding-top: 2.5rem;
 }
