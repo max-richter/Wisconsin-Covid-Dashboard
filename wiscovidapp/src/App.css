@@ -69,9 +69,27 @@ body {
   padding: 1.5rem;
   margin-top: 2rem;
   height: calc(100%);
+  background: #202a3b!important;
+  color: white;
 }
-
 
 .row-styled {
   padding-top: 2.5rem;
+}
+
+
+@media (max-width: 576px) { 
+
+}
+
+@media (min-width: 768px) { 
+
+}
+
+@media (min-width: 992px) { 
+
+}
+
+@media (min-width: 1200px) { 
+
 }

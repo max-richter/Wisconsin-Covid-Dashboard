@@ -9,26 +9,31 @@ ReactFusionCharts.fcRoot(FusionCharts, charts, maps, Wi);
 
 const dataSource = {
     chart: {
-      caption: "Lead sources by industry",
-      yaxisname: "Number of Leads",
+      yaxisname: "Number of Tests",
+      xaxisname: "Date of Test",
       aligncaptionwithcanvas: "0",
-      plottooltext: "<b>$dataValue</b> leads received",
-      theme: "fusion"
+      theme: "fusion",
+      showBorder: "0",
+      bgColor: "#202a3b",
+      bgAlpha: "100",
+      baseFontColor: "#FFFFFF",
+      chartTopMargin: "95",
+      baseFontSize: "16",
+      yAxisMaxValue: "20"
     },
-    data: [
-      {
-        label: "Travel & Leisure",
-        value: "41"
-      },
-      {
-        label: "Advertising/Marketing/PR",
-        value: "39"
-      },
-      {
-        label: "Other",
-        value: "38"
-      }
-    ]
+    data:  [{
+      "label": "Jan",
+      "value": "3"
+    },
+    {
+      "label": "Feb",
+      "value": "4"
+    },
+    {
+      "label": "Mar",
+      "value": "5"
+    },
+  ]
 };
 
 class DataSection extends React.Component {
@@ -98,7 +103,7 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>% Change in Current Positive Cases</div>
+                <div>% Change in Daily Positive Cases</div>
               </div>
               <div className="card-value">
                 <span>0</span>
@@ -109,13 +114,13 @@ class DataSection extends React.Component {
 
         {/* THIRD ROW  */}
         <div className="row justify-content-center row-styled">
-          <div className="col-lg-3 col-sm-6">
+          <div className="col-md-5">
             <div className="card grid-card">
               <div className="chart-container">
                   <ReactFusionCharts 
-                    type="bar2d"
+                    type="column2d"
                     width="100%"
-                    height="250%"
+                    height="350%"
                     dataFormat="JSON"
                     dataSource={dataSource}
                   />
@@ -123,14 +128,14 @@ class DataSection extends React.Component {
             </div>
           </div>
 
-          <div className="col-lg-6">
+          <div className="col-md-5">
             <div className="card grid-card">
               <div className="chart-container">
                 <ReactFusionCharts 
-                      type="maps/wisconsin"
-                      width="100%"
-                      height="100%"
-                      dataFormat="json"
+                    type="maps/wisconsin"
+                    width="100%"
+                    height="100%"
+                    dataFormat="json"
                 />
               </div>
             </div>
