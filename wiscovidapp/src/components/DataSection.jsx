@@ -114,19 +114,6 @@ class DataSection extends React.Component {
 
         {/* THIRD ROW  */}
         <div className="row justify-content-center row-styled">
-          <div className="col-md-5">
-            <div className="card grid-card">
-              <div className="chart-container">
-                  <ReactFusionCharts 
-                    type="column2d"
-                    width="100%"
-                    height="350%"
-                    dataFormat="JSON"
-                    dataSource={dataSource}
-                  />
-              </div>
-            </div>
-          </div>
 
           <div className="col-md-5">
             <div className="card grid-card">
@@ -134,7 +121,7 @@ class DataSection extends React.Component {
                 <ReactFusionCharts 
                     type="maps/wisconsin"
                     width="100%"
-                    height="100%"
+                    height="425%"
                     dataFormat="json"
                 />
               </div>
