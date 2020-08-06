@@ -5,15 +5,17 @@ import logo from './logo.svg';
 import Navbar from './components/Navbar';
 import './App.css';
 import DataSection from './components/DataSection';
- 
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <DataSection />
-    </div>
-  );
+class App extends React.Component {
+  
+  render() {
+    return (
+      <div className="App">
+        <Navbar />
+        <DataSection />
+      </div>
+    );
+  }
 }
 
 export default App;

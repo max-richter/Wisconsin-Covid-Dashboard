@@ -1,19 +1,17 @@
 import React from "react";
 
-
-
 /**
  * Contains everything needed for the navbar
  */
 class Navbar extends React.Component {
   render() {
     return (
-      <div class="container-fluid nav-width">
-        <nav class="navbar navbar-dark">
-          <a class="navbar-brand">Wisconsin COVID-19 Dashboard</a>
-          <div class="dropdown">
+      <div className="container-fluid nav-width">
+        <nav className="navbar navbar-dark">
+          <a className="navbar-brand">Wisconsin COVID-19 Dashboard</a>
+          <div className="dropdown">
             <button
-              class="btn btn-secondary dropdown-toggle"
+              className="btn btn-secondary dropdown-toggle"
               type="button"
               id="dropdownMenuButton"
               data-toggle="dropdown"
@@ -23,16 +21,16 @@ class Navbar extends React.Component {
               Select County
             </button>
             <div
-              class="dropdown-menu dropdown-menu-right"
+              className="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Dane
               </a>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Sauk
               </a>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Milwaukee
               </a>
             </div>

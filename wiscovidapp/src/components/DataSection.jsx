@@ -4,40 +4,71 @@ import charts from 'fusioncharts/fusioncharts.charts';
 import maps from 'fusioncharts/fusioncharts.maps';
 import Wi from 'fusioncharts/maps/es/fusioncharts.wisconsin';
 import ReactFusionCharts from 'react-fusioncharts';
+import axios from 'axios';
 
 ReactFusionCharts.fcRoot(FusionCharts, charts, maps, Wi);
 
-const dataSource = {
-    chart: {
-      yaxisname: "Number of Tests",
-      xaxisname: "Date of Test",
-      aligncaptionwithcanvas: "0",
-      theme: "fusion",
-      showBorder: "0",
-      bgColor: "#202a3b",
-      bgAlpha: "100",
-      baseFontColor: "#FFFFFF",
-      chartTopMargin: "95",
-      baseFontSize: "16",
-      yAxisMaxValue: "20"
-    },
-    data:  [{
-      "label": "Jan",
-      "value": "3"
-    },
-    {
-      "label": "Feb",
-      "value": "4"
-    },
-    {
-      "label": "Mar",
-      "value": "5"
-    },
-  ]
-};
+const api = axios.create({
+  baseURL: "https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/10/query?where=NAME=" + 
+    "%27Sauk%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json"
+});
 
 class DataSection extends React.Component {
+  
+  // keep track of object's state
+  state = {
+    countyData: {
+      negative: 0,
+      positive: 0,
+      deaths: 0,
+      posNew: 0,
+      negNew: 0,
+      testNew: 0,
+      name: '',
+      dailyChange: 0
+    } 
+  };
+
+  // simple constructor
+  constructor() {
+    super();
+  }
+
+  // get covid data from api
+  componentDidMount() {
+    api.get('').then(data => {  
+      let respData;
+      let temp = data.data.features;
+      let currLength = temp.length - 1;
+      respData = temp[currLength].attributes;
+      
+      this.setState( prevState => {
+        let countyData = Object.assign({}, prevState.countyData);
+        countyData['negative'] = respData.NEGATIVE;
+        countyData['positive'] = respData.POSITIVE;
+        countyData['deaths'] = respData.DEATHS;
+        countyData['posNew'] = respData.POS_NEW;
+        countyData['negNew'] = respData.NEG_NEW;
+        countyData['testNew'] = respData.TEST_NEW;
+        countyData['name'] = respData.NAME;
+        countyData['dailyChange'] = respData.POS_NEW - temp[currLength-1].attributes.POS_NEW;
+        return { countyData };
+      });  
+    }).catch(error => {
+      alert("Something went wrong, please reload the page");
+    });
+  };
+
+
   render() {
+
+    let caseChange;
+    if (this.state.countyData.dailyChange > 0) {
+      caseChange = <span>{'+' + this.state.countyData.dailyChange.toLocaleString()}</span>;
+    } else {
+      caseChange = <span>{this.state.countyData.dailyChange.toLocaleString()}</span>;
+    }
+
     return (
       <div className="container-fluid">
         {/* FIRST ROW */}
@@ -45,10 +76,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>Positive Cases</div>
+                <div>Positive Cases (Total)</div>
               </div>
               <div className="card-value">
-                <span>0</span>
+                <span>{this.state.countyData.positive.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -56,10 +87,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>Negative Cases</div>
+                <div>Negative Cases (Total)</div>
               </div>
               <div className="card-value">
-                <span>0</span>
+                <span>{this.state.countyData.negative.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -70,7 +101,7 @@ class DataSection extends React.Component {
                 <div>Total Deaths</div>
               </div>
               <div className="card-value">
-                <span>0</span>
+                <span>{this.state.countyData.deaths.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -81,10 +112,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>New Positive Cases</div>
+                <div>New Positive Cases (Daily)</div>
               </div>
               <div className="card-value">
-                <span>0</span>
+                <span>{this.state.countyData.posNew.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -92,10 +123,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>New Negative Cases</div>
+                <div>New Negative Cases (Daily)</div>
               </div>
               <div className="card-value">
-                <span>0</span>
+                <span>{this.state.countyData.negNew.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -103,10 +134,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>% Change in Daily Positive Cases</div>
+                <div>Change in Daily Positive Cases</div>
               </div>
               <div className="card-value">
-                <span>0</span>
+                {caseChange}
               </div>
             </div>
           </div>
