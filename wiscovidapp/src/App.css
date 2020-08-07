@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .App-logo {
@@ -67,29 +68,44 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   padding: 1.5rem;
-  margin-top: 2rem;
   height: calc(100%);
   background: #202a3b!important;
   color: white;
+  text-align: left;
 }
 
 .row-styled {
-  padding-top: 2.5rem;
+  padding-top: 1.5rem;
 }
 
+.card-title-style {
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  color: #bbbbbb;
+}
 
-@media (max-width: 576px) { 
+.card-data-style {
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: 0.08rem;
+}
+
+.card-value {
+  padding-top: 1.5rem;
+}
+
+@media (min-width: 576px) { 
 
 }
 
 @media (min-width: 768px) { 
-
+  
 }
 
 @media (min-width: 992px) { 
-
+  
 }
 
 @media (min-width: 1200px) { 
-
+  
 }

@@ -5,13 +5,29 @@ import maps from 'fusioncharts/fusioncharts.maps';
 import Wi from 'fusioncharts/maps/es/fusioncharts.wisconsin';
 import ReactFusionCharts from 'react-fusioncharts';
 import axios from 'axios';
+import './map-theme';
 
+// create fusion charts instance
 ReactFusionCharts.fcRoot(FusionCharts, charts, maps, Wi);
 
+// create axios instance
 const api = axios.create({
   baseURL: "https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/10/query?where=NAME=" + 
-    "%27Sauk%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json"
+    "%27Dane%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json"
 });
+
+// configure wisconsin map
+const wiMap = {
+  type: 'maps/wisconsin',
+  width: '100%',
+  height: '650%',
+  dataFormat: 'json',
+  dataSource: {
+    chart: {
+      theme: 'wistheme'
+    }
+  }
+};
 
 class DataSection extends React.Component {
   
@@ -64,22 +80,22 @@ class DataSection extends React.Component {
 
     let caseChange;
     if (this.state.countyData.dailyChange > 0) {
-      caseChange = <span>{'+' + this.state.countyData.dailyChange.toLocaleString()}</span>;
+      caseChange = <span className="card-data-style">{'+' + this.state.countyData.dailyChange.toLocaleString()}</span>;
     } else {
-      caseChange = <span>{this.state.countyData.dailyChange.toLocaleString()}</span>;
+      caseChange = <span className="card-data-style">{this.state.countyData.dailyChange.toLocaleString()}</span>;
     }
 
     return (
       <div className="container-fluid">
         {/* FIRST ROW */}
-        <div className="row justify-content-center row styled">
+        <div className="row justify-content-center row-styled">
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>Positive Cases (Total)</div>
+                <div className="card-title-style">Positive Cases (Total)</div>
               </div>
               <div className="card-value">
-                <span>{this.state.countyData.positive.toLocaleString()}</span>
+                <span className="card-data-style">{this.state.countyData.positive.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -87,10 +103,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>Negative Cases (Total)</div>
+                <div className="card-title-style">Negative Cases (Total)</div>
               </div>
               <div className="card-value">
-                <span>{this.state.countyData.negative.toLocaleString()}</span>
+                <span className="card-data-style">{this.state.countyData.negative.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -98,10 +114,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>Total Deaths</div>
+                <div className="card-title-style">Total Deaths</div>
               </div>
               <div className="card-value">
-                <span>{this.state.countyData.deaths.toLocaleString()}</span>
+                <span className="card-data-style">{this.state.countyData.deaths.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -112,10 +128,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>New Positive Cases (Daily)</div>
+                <div className="card-title-style">New Positive Cases (Daily)</div>
               </div>
               <div className="card-value">
-                <span>{this.state.countyData.posNew.toLocaleString()}</span>
+                <span className="card-data-style">{this.state.countyData.posNew.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -123,10 +139,10 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>New Negative Cases (Daily)</div>
+                <div className="card-title-style">New Negative Cases (Daily)</div>
               </div>
               <div className="card-value">
-                <span>{this.state.countyData.negNew.toLocaleString()}</span>
+                <span className="card-data-style">{this.state.countyData.negNew.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -134,7 +150,7 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div>Change in Daily Positive Cases</div>
+                <div className="card-title-style">Change in Daily Positive Cases</div>
               </div>
               <div className="card-value">
                 {caseChange}
@@ -149,11 +165,8 @@ class DataSection extends React.Component {
           <div className="col-md-5">
             <div className="card grid-card">
               <div className="chart-container">
-                <ReactFusionCharts 
-                    type="maps/wisconsin"
-                    width="100%"
-                    height="425%"
-                    dataFormat="json"
+                <ReactFusionCharts
+                    {...wiMap}
                 />
               </div>
             </div>

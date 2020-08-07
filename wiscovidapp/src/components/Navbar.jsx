@@ -18,7 +18,7 @@ class Navbar extends React.Component {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Select County
+              County
             </button>
             <div
               className="dropdown-menu dropdown-menu-right"
