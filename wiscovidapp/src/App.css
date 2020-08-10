@@ -94,8 +94,14 @@ body {
   padding-top: 1.5rem;
 }
 
-@media (min-width: 576px) { 
+.navbar-text {
+  padding-right: 1rem;
+}
 
+@media (max-width: 576px) { 
+  .row-styled {
+    margin-top: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) { 

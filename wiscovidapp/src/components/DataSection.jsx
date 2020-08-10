@@ -45,11 +45,6 @@ class DataSection extends React.Component {
     } 
   };
 
-  // simple constructor
-  constructor() {
-    super();
-  }
-
   // get covid data from api
   componentDidMount() {
     api.get('').then(data => {  
