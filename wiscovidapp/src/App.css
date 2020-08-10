@@ -102,6 +102,9 @@ body {
   .row-styled {
     margin-top: 1.5rem;
   }
+  .col-lg-3 {
+    padding-top: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) { 
