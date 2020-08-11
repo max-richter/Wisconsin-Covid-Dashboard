@@ -5,6 +5,7 @@ import maps from 'fusioncharts/fusioncharts.maps';
 import Wi from 'fusioncharts/maps/es/fusioncharts.wisconsin';
 import ReactFusionCharts from 'react-fusioncharts';
 import axios from 'axios';
+import { GrBug, GrScorecard, GrGroup, GrFormClose, GrFormCheckmark } from 'react-icons/gr';
 import './map-theme';
 
 // create fusion charts instance
@@ -81,13 +82,15 @@ class DataSection extends React.Component {
     }
 
     return (
+      
       <div className="container-fluid">
         {/* FIRST ROW */}
         <div className="row justify-content-center row-styled">
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div className="card-title-style">Positive Cases (Total)</div>
+                <div className="card-title-style">Positive Cases (Total) <GrBug className="icon-styled" size="1.5rem"/></div>
+                
               </div>
               <div className="card-value">
                 <span className="card-data-style">{this.state.countyData.positive.toLocaleString()}</span>
@@ -98,8 +101,9 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div className="card-title-style">Negative Cases (Total)</div>
+                <div className="card-title-style">Negative Cases (Total) <GrScorecard className="icon-styled" size="1.5rem"/></div>  
               </div>
+              
               <div className="card-value">
                 <span className="card-data-style">{this.state.countyData.negative.toLocaleString()}</span>
               </div>
@@ -109,7 +113,7 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div className="card-title-style">Total Deaths</div>
+                <div className="card-title-style">Total Deaths <GrGroup className="icon-styled" size="1.5rem"/></div>
               </div>
               <div className="card-value">
                 <span className="card-data-style">{this.state.countyData.deaths.toLocaleString()}</span>
@@ -123,7 +127,7 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div className="card-title-style">New Positive Cases (Daily)</div>
+                <div className="card-title-style">New Positive Cases (Daily) <GrFormClose className="icon-styled" size="1.5rem"/></div>
               </div>
               <div className="card-value">
                 <span className="card-data-style">{this.state.countyData.posNew.toLocaleString()}</span>
@@ -134,7 +138,7 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div className="card-title-style">New Negative Cases (Daily)</div>
+                <div className="card-title-style">New Negative Cases (Daily) <GrFormCheckmark className="icon-styled" size="1.5rem"/></div>
               </div>
               <div className="card-value">
                 <span className="card-data-style">{this.state.countyData.negNew.toLocaleString()}</span>
