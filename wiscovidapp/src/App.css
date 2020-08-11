@@ -120,8 +120,12 @@ svg path {
   
 }
 
-@media (min-width: 992px) { 
-  
+@media (max-width: 992px) { 
+  .col-lg-3 {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding-top: 1.5rem;
+  }
 }
 
 @media (min-width: 1200px) { 

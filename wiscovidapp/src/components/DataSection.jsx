@@ -5,7 +5,7 @@ import maps from 'fusioncharts/fusioncharts.maps';
 import Wi from 'fusioncharts/maps/es/fusioncharts.wisconsin';
 import ReactFusionCharts from 'react-fusioncharts';
 import axios from 'axios';
-import { GrBug, GrScorecard, GrGroup, GrFormClose, GrFormCheckmark } from 'react-icons/gr';
+import { GrBug, GrScorecard, GrGroup, GrFormClose, GrStatusCritical, GrStatusGood, GrBarChart } from 'react-icons/gr';
 import './map-theme';
 
 // create fusion charts instance
@@ -127,7 +127,7 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div className="card-title-style">New Positive Cases (Daily) <GrFormClose className="icon-styled" size="1.5rem"/></div>
+                <div className="card-title-style">New Positive Cases (Daily) <GrStatusCritical className="icon-styled" size="1.5rem"/></div>
               </div>
               <div className="card-value">
                 <span className="card-data-style">{this.state.countyData.posNew.toLocaleString()}</span>
@@ -138,7 +138,7 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div className="card-title-style">New Negative Cases (Daily) <GrFormCheckmark className="icon-styled" size="1.5rem"/></div>
+                <div className="card-title-style">New Negative Cases (Daily) <GrStatusGood className="icon-styled" size="1.5rem"/></div>
               </div>
               <div className="card-value">
                 <span className="card-data-style">{this.state.countyData.negNew.toLocaleString()}</span>
@@ -149,7 +149,7 @@ class DataSection extends React.Component {
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
-                <div className="card-title-style">Change in Daily Positive Cases</div>
+                <div className="card-title-style">Change in Daily Positive Cases <GrBarChart className="icon-styled" size="1.5rem"/></div>
               </div>
               <div className="card-value">
                 {caseChange}
