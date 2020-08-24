@@ -22,7 +22,7 @@ class DataSection extends React.Component {
       negNew: 0,
       testNew: 0,
       name: "",
-      dailyChange: 0,
+      newTests: 0,
     },
   };
 
@@ -32,8 +32,9 @@ class DataSection extends React.Component {
    */
   componentDidMount() {
     let baseURL =
-      "https://dhsgis.wi.gov/server/rest/services/DHS_COVID19/COVID19_WI/FeatureServer/1/query?where=NAME=%27" + 
-      this.props.currCounty + "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json";
+      "https://dhsgis.wi.gov/server/rest/services/DHS_COVID19/COVID19_WI/FeatureServer/1/query?where=NAME=%27" +
+      this.props.currCounty +
+      "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json";
     axios
       .get(baseURL)
       .then((data) => {
@@ -50,9 +51,8 @@ class DataSection extends React.Component {
           countyData["negNew"] = respData.NEG_NEW;
           countyData["testNew"] = respData.TEST_NEW;
           countyData["name"] = respData.NAME;
-          // countyData["dailyChange"] =
-          //   respData.POS_NEW - temp[currLength - 1].attributes.POS_NEW;
-          console.log(respData);
+          countyData["newTests"] = respData.TEST_NEW;
+
           return { countyData };
         });
       })
@@ -67,55 +67,39 @@ class DataSection extends React.Component {
    * is that this will be called only when the state updates
    */
   componentDidUpdate() {
-    let baseURL =
-      "https://dhsgis.wi.gov/server/rest/services/DHS_COVID19/COVID19_WI/FeatureServer/1/query?where=NAME=%27" + this.props.currCounty + "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json";
-    axios
-      .get(baseURL)
-      .then((data) => {
-        let respData;
-        let temp = data.data.features;
-        let currLength = temp.length - 1;
-        respData = temp[currLength].attributes;
-        this.setState((prevState) => {
-          let countyData = Object.assign({}, prevState.countyData);
-          countyData["negative"] = respData.NEGATIVE;
-          countyData["positive"] = respData.POSITIVE;
-          countyData["deaths"] = respData.DEATHS;
-          countyData["posNew"] = respData.POS_NEW;
-          countyData["negNew"] = respData.NEG_NEW;
-          countyData["testNew"] = respData.TEST_NEW;
-          countyData["name"] = respData.NAME;
-          // countyData["dailyChange"] =
-          //   respData.POS_NEW - temp[currLength - 1].attributes.POS_NEW;
-          console.log(respData);
-          return { countyData };
+    if (this.state.countyData.name !== this.props.currCounty) {
+      let baseURL =
+        "https://dhsgis.wi.gov/server/rest/services/DHS_COVID19/COVID19_WI/FeatureServer/1/query?where=NAME=%27" +
+        this.props.currCounty +
+        "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json";
+      axios
+        .get(baseURL)
+        .then((data) => {
+          let respData;
+          let temp = data.data.features;
+          let currLength = temp.length - 1;
+          respData = temp[currLength].attributes;
+          this.setState((prevState) => {
+            let countyData = Object.assign({}, prevState.countyData);
+            countyData["negative"] = respData.NEGATIVE;
+            countyData["positive"] = respData.POSITIVE;
+            countyData["deaths"] = respData.DEATHS;
+            countyData["posNew"] = respData.POS_NEW;
+            countyData["negNew"] = respData.NEG_NEW;
+            countyData["testNew"] = respData.TEST_NEW;
+            countyData["name"] = respData.NAME;
+            countyData["newTests"] = respData.TEST_NEW;
+
+            return { countyData };
+          });
+        })
+        .catch((error) => {
+          alert("Something went wrong, please reload the page");
         });
-      })
-      .catch((error) => {
-        alert("Something went wrong, please reload the page");
-      });
+    }
   }
 
   render() {
-    /**
-     * decide whether or not change in daily positive cases is positive or negative
-     * add appropriate '+ or -' depending on the value
-     */
-    let caseChange;
-    if (this.state.countyData.dailyChange > 0) {
-      caseChange = (
-        <span className="card-data-style">
-          {"+" + this.state.countyData.dailyChange.toLocaleString()}
-        </span>
-      );
-    } else {
-      caseChange = (
-        <span className="card-data-style">
-          {this.state.countyData.dailyChange.toLocaleString()}
-        </span>
-      );
-    }
-
     return (
       <div className="container-fluid">
         {/* FIRST ROW */}
@@ -207,11 +191,15 @@ class DataSection extends React.Component {
             <div className="card grid-card">
               <div className="card-heading">
                 <div className="card-title-style">
-                  Change in Daily Positive Cases{" "}
+                  Tests Adminstered (Daily){" "}
                   <GrBarChart className="icon-styled" size="1.5rem" />
                 </div>
               </div>
-              <div className="card-value">{caseChange}</div>
+              <div className="card-value">
+                <span className="card-data-style">
+                  {this.state.countyData.newTests.toLocaleString()}
+                </span>
+              </div>
             </div>
           </div>
         </div>
