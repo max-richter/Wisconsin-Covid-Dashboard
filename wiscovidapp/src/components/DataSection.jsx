@@ -32,10 +32,8 @@ class DataSection extends React.Component {
    */
   componentDidMount() {
     let baseURL =
-      "https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/10/query?where=NAME=" +
-      "%27" +
-      this.props.currCounty +
-      "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json";
+      "https://dhsgis.wi.gov/server/rest/services/DHS_COVID19/COVID19_WI/FeatureServer/1/query?where=NAME=%27" + 
+      this.props.currCounty + "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json";
     axios
       .get(baseURL)
       .then((data) => {
@@ -52,8 +50,9 @@ class DataSection extends React.Component {
           countyData["negNew"] = respData.NEG_NEW;
           countyData["testNew"] = respData.TEST_NEW;
           countyData["name"] = respData.NAME;
-          countyData["dailyChange"] =
-            respData.POS_NEW - temp[currLength - 1].attributes.POS_NEW;
+          // countyData["dailyChange"] =
+          //   respData.POS_NEW - temp[currLength - 1].attributes.POS_NEW;
+          console.log(respData);
           return { countyData };
         });
       })
@@ -69,10 +68,7 @@ class DataSection extends React.Component {
    */
   componentDidUpdate() {
     let baseURL =
-      "https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/10/query?where=NAME=" +
-      "%27" +
-      this.props.currCounty +
-      "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json";
+      "https://dhsgis.wi.gov/server/rest/services/DHS_COVID19/COVID19_WI/FeatureServer/1/query?where=NAME=%27" + this.props.currCounty + "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json";
     axios
       .get(baseURL)
       .then((data) => {
@@ -89,8 +85,9 @@ class DataSection extends React.Component {
           countyData["negNew"] = respData.NEG_NEW;
           countyData["testNew"] = respData.TEST_NEW;
           countyData["name"] = respData.NAME;
-          countyData["dailyChange"] =
-            respData.POS_NEW - temp[currLength - 1].attributes.POS_NEW;
+          // countyData["dailyChange"] =
+          //   respData.POS_NEW - temp[currLength - 1].attributes.POS_NEW;
+          console.log(respData);
           return { countyData };
         });
       })

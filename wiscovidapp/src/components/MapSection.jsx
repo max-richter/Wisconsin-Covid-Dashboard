@@ -22,7 +22,7 @@ const wiMap = {
     data: [
       {
         id: "025",
-        value: "500Cases",
+        value: "500",
       },
     ],
   },
