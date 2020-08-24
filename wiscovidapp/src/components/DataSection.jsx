@@ -1,37 +1,11 @@
 import React from "react";
-import FusionCharts from 'fusioncharts';
-import charts from 'fusioncharts/fusioncharts.charts';
-import maps from 'fusioncharts/fusioncharts.maps';
-import Wi from 'fusioncharts/maps/es/fusioncharts.wisconsin';
-import ReactFusionCharts from 'react-fusioncharts';
+import MapSection from './MapSection';
 import axios from 'axios';
-import { GrBug, GrScorecard, GrGroup, GrFormClose, GrStatusCritical, GrStatusGood, GrBarChart } from 'react-icons/gr';
+import { GrBug, GrScorecard, GrGroup, GrStatusCritical, GrStatusGood, GrBarChart } from 'react-icons/gr';
 import './map-theme';
 
-// create fusion charts instance
-ReactFusionCharts.fcRoot(FusionCharts, charts, maps, Wi);
-
-// create axios instance
-const api = axios.create({
-  baseURL: "https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/10/query?where=NAME=" + 
-    "%27Dane%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json"
-});
-
-// configure wisconsin map
-const wiMap = {
-  type: 'maps/wisconsin',
-  width: '100%',
-  height: '650%',
-  dataFormat: 'json',
-  dataSource: {
-    chart: {
-      theme: 'wistheme'
-    }
-  }
-};
-
 class DataSection extends React.Component {
-  
+
   // keep track of object's state
   state = {
     countyData: {
@@ -46,14 +20,48 @@ class DataSection extends React.Component {
     } 
   };
 
-  // get covid data from api
+  /**
+   * called initially as the component renders
+   * receives data from the default county of DANE
+   */
   componentDidMount() {
-    api.get('').then(data => {  
+    let baseURL = "https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/10/query?where=NAME=" + 
+    "%27"+ this.props.currCounty + "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json"
+    axios.get(baseURL).then(data => {  
       let respData;
       let temp = data.data.features;
       let currLength = temp.length - 1;
       respData = temp[currLength].attributes;
-      
+      this.setState( prevState => {
+        let countyData = Object.assign({}, prevState.countyData);
+        countyData['negative'] = respData.NEGATIVE;
+        countyData['positive'] = respData.POSITIVE;
+        countyData['deaths'] = respData.DEATHS;
+        countyData['posNew'] = respData.POS_NEW;
+        countyData['negNew'] = respData.NEG_NEW;
+        countyData['testNew'] = respData.TEST_NEW;
+        countyData['name'] = respData.NAME;
+        countyData['dailyChange'] = respData.POS_NEW - temp[currLength-1].attributes.POS_NEW;
+        return { countyData };
+      });  
+    }).catch(error => {
+      alert("Something went wrong, please reload the page");
+    });
+  };
+
+  /**
+   * gets new covid data as user selects a different county
+   * this function is identical to didMount(), the only difference
+   * is that this will be called only when the state updates
+   */
+  componentDidUpdate() {
+      let baseURL = "https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/10/query?where=NAME=" + 
+    "%27"+ this.props.currCounty + "%27&outFields=NEGATIVE,POSITIVE,DEATHS,POS_NEW,NEG_NEW,TEST_NEW,NAME&outSR=4326&f=json"
+    axios.get(baseURL).then(data => {  
+      let respData;
+      let temp = data.data.features;
+      let currLength = temp.length - 1;
+      respData = temp[currLength].attributes;
       this.setState( prevState => {
         let countyData = Object.assign({}, prevState.countyData);
         countyData['negative'] = respData.NEGATIVE;
@@ -74,13 +82,17 @@ class DataSection extends React.Component {
 
   render() {
 
+    /**
+     * decide whether or not change in daily positive cases is positive or negative
+     * add appropriate '+ or -' depending on the value
+     */
     let caseChange;
     if (this.state.countyData.dailyChange > 0) {
       caseChange = <span className="card-data-style">{'+' + this.state.countyData.dailyChange.toLocaleString()}</span>;
     } else {
       caseChange = <span className="card-data-style">{this.state.countyData.dailyChange.toLocaleString()}</span>;
     }
-
+    
     return (
       
       <div className="container-fluid">
@@ -159,18 +171,7 @@ class DataSection extends React.Component {
         </div>
 
         {/* THIRD ROW  */}
-        <div className="row justify-content-center row-styled">
-
-          <div className="col-md-5">
-            <div className="card grid-card">
-              <div className="chart-container">
-                <ReactFusionCharts
-                    {...wiMap}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <MapSection />
       </div>
     );
   }

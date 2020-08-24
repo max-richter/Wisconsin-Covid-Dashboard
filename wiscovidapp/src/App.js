@@ -12,7 +12,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavbarSection />
-        <DataSection />
       </div>
     );
   }

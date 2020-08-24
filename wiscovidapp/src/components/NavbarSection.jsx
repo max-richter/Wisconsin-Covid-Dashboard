@@ -1,7 +1,7 @@
 import React from "react";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-import Navbar from "react-bootstrap/Navbar";
+import DataSection from './DataSection';
 const countyNames = require("./counties.json");
 
 // array of wisconsin counties
@@ -19,11 +19,12 @@ class NavbarSection extends React.Component {
   };
 
   render() {
+    
     return (
       <div className="container-fluid nav-width">
         <nav className="navbar navbar-dark">
           <a className="navbar-brand">Wisconsin COVID-19 Dashboard</a>
-          <span class="navbar-text ml-auto">Showing Data for:</span>
+          <span className="navbar-text ml-auto">Showing Data for:</span>
           <div className="dropdown">
             <DropdownButton
               title={this.state.selectedCounty}
@@ -42,6 +43,7 @@ class NavbarSection extends React.Component {
             </DropdownButton>
           </div>
         </nav>
+        <DataSection currCounty={this.state.selectedCounty}/>
       </div>
     );
   }
