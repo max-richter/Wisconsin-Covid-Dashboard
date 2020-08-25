@@ -116,6 +116,35 @@ svg path {
   cursor: pointer;
 }
 
+.footer-container {
+  margin-bottom: 5rem;
+}
+
+.card-text-style {
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.08rem;
+  text-align: left;
+  text-decoration: none;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+.link-icon-style {
+  margin-left: 1rem;
+}
 
 @media (max-width: 576px) { 
   .row-styled {
@@ -123,6 +152,9 @@ svg path {
   }
   .col-lg-3 {
     padding-top: 1.5rem;
+  }
+  .card-text-style {
+    font-size: 14px;
   }
 }
 

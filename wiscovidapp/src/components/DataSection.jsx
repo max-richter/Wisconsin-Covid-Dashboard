@@ -1,5 +1,5 @@
 import React from "react";
-import MapSection from "./InfoSection";
+import InfoSection from "./InfoSection";
 import axios from "axios";
 import {
   GrBug,
@@ -204,7 +204,7 @@ class DataSection extends React.Component {
         </div>
 
         {/* THIRD ROW  */}
-        <MapSection />
+        <InfoSection />
       </div>
     );
   }

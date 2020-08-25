@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import NavbarSection from './components/NavbarSection';
 import AppFooter from './components/AppFooter';
 import './App.css';
-import DataSection from './components/DataSection';
+
 
 class App extends React.Component {
   
