@@ -13,7 +13,7 @@ ReactFusionCharts.fcRoot(FusionCharts, charts, maps, Wi);
 const wiMap = {
   type: "maps/wisconsin",
   width: "100%",
-  height: "650%",
+  height: "600%",
   dataFormat: "json",
   dataSource: {
     chart: {

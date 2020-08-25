@@ -13,6 +13,7 @@ const countyData = countyNames.counties;
 class NavbarSection extends React.Component {
   state = { selectedCounty: "Dane" };
 
+  // sets the state to the selected county
   onSelectHandler = (eventKey, event) => {
     let tempVal = event.target.innerHTML;
     this.setState({ selectedCounty: tempVal });

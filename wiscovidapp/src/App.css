@@ -107,6 +107,16 @@ svg path {
   right: 1rem;
 }
 
+.footer-style {
+  line-height: 1.2rem;
+}
+
+.footer-text {
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+
 @media (max-width: 576px) { 
   .row-styled {
     margin-top: 1.5rem;
