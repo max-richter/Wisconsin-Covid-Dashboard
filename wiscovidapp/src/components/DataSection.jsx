@@ -1,5 +1,5 @@
 import React from "react";
-import MapSection from "./MapSection";
+import MapSection from "./InfoSection";
 import axios from "axios";
 import {
   GrBug,
@@ -9,7 +9,6 @@ import {
   GrStatusGood,
   GrBarChart,
 } from "react-icons/gr";
-import "./map-theme";
 
 class DataSection extends React.Component {
   // keep track of object's state

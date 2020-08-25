@@ -112,10 +112,10 @@ svg path {
 }
 
 .footer-text {
-  text-align: center;
   margin: auto;
   cursor: pointer;
 }
+
 
 @media (max-width: 576px) { 
   .row-styled {

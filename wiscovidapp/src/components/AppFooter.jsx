@@ -11,9 +11,18 @@ const AppFooter = () => {
         <div className="fixed-bottom footer-style">
         <Navbar color="blue" dark>
           <Container>
-            <div>
-                <Button className="footer-text" color="danger" onClick={toggle}>About</Button>
-            </div>
+                <Button className="footer-text" color="info" onClick={toggle}>About</Button>
+                <Modal isOpen={modal} toggle={toggle} centered="true">
+                  <ModalHeader toggle={toggle}>About</ModalHeader>
+                  <ModalBody>
+                    This is the modal body
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="primary" onClick={toggle}>Close</Button>
+                    <Button color="secondary" href="https://github.com/max-richter/Wisconsin-Covid-Dashboard" target="_blank" onClick={toggle}>GitHub Repo</Button>
+                  </ModalFooter>
+                </Modal>
+                
           </Container>
         </Navbar>
       </div>

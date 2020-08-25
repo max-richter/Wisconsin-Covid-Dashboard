@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactFC from "react-fusioncharts";
-import FusionCharts from "fusioncharts";
 import logo from './logo.svg';
 import NavbarSection from './components/NavbarSection';
 import AppFooter from './components/AppFooter';
