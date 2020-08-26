@@ -102,7 +102,7 @@ class DataSection extends React.Component {
     return (
       <div className="container-fluid">
         {/* FIRST ROW */}
-        <div className="row justify-content-center row-styled">
+        <div className="row justify-content-center row-styled fade-in">
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">
@@ -153,7 +153,7 @@ class DataSection extends React.Component {
         </div>
 
         {/* SECOND ROW */}
-        <div className="row justify-content-center row-styled">
+        <div className="row justify-content-center row-styled fade-in">
           <div className="col-lg-3 col-sm-6">
             <div className="card grid-card">
               <div className="card-heading">

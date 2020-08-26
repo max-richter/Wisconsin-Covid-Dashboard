@@ -24,7 +24,7 @@ class NavbarSection extends React.Component {
     return (
       <div className="container-fluid nav-width">
         <nav className="navbar navbar-dark">
-          <a className="navbar-brand">Wisconsin COVID-19 Dashboard</a>
+          <a className="navbar-brand" href="./">Wisconsin COVID-19 Dashboard</a>
           <span className="navbar-text ml-auto">Showing Data for:</span>
           <div className="dropdown">
             <DropdownButton
@@ -36,6 +36,8 @@ class NavbarSection extends React.Component {
                   <Dropdown.Item
                     eventKey={index.toString()}
                     onSelect={this.onSelectHandler}
+                    className="dropdown-item"
+                    as="button"
                   >
                     {data}
                   </Dropdown.Item>

@@ -72,6 +72,7 @@ body {
   background: #202a3b!important;
   color: white;
   text-align: left;
+  box-shadow: 0 0 3px 3px rgba(15, 17, 32, 0.5);
 }
 
 .row-styled {
@@ -128,6 +129,10 @@ svg path {
   text-decoration: none;
 }
 
+.dropdown-item {
+  color: black;
+}
+
 a {
   color: white;
 }
@@ -144,6 +149,11 @@ a:link {
 
 .link-icon-style {
   margin-left: 1rem;
+}
+
+.fade-in {
+	-webkit-animation: fade-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 @media (max-width: 576px) { 
@@ -172,4 +182,21 @@ a:link {
 
 @media (min-width: 1200px) { 
   
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

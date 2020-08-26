@@ -8,7 +8,6 @@ import {
   ModalBody,
   ModalFooter,
 } from "reactstrap";
-import App from "../App";
 
 /**
  * Footer of the app. Contains the "About" modal with information
