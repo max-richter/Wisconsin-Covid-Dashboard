@@ -107,11 +107,11 @@ class DataSection extends React.Component {
             <div className="card grid-card">
               <div className="card-heading">
                 <div className="card-title-style">
-                  Positive Cases (Total){" "}
+                  Positive Cases (Cumulative){" "}
                   <GrBug className="icon-styled" size="1.5rem" />
                 </div>
               </div>
-              <div className="card-value">
+              <div className="card-value fade-in-left">
                 <span className="card-data-style">
                   {this.state.countyData.positive.toLocaleString()}
                 </span>
@@ -123,12 +123,12 @@ class DataSection extends React.Component {
             <div className="card grid-card">
               <div className="card-heading">
                 <div className="card-title-style">
-                  Negative Cases (Total){" "}
+                  Negative Cases (Cumulative){" "}
                   <GrScorecard className="icon-styled" size="1.5rem" />
                 </div>
               </div>
 
-              <div className="card-value">
+              <div className="card-value fade-in-left">
                 <span className="card-data-style">
                   {this.state.countyData.negative.toLocaleString()}
                 </span>
@@ -143,7 +143,7 @@ class DataSection extends React.Component {
                   Total Deaths <GrGroup className="icon-styled" size="1.5rem" />
                 </div>
               </div>
-              <div className="card-value">
+              <div className="card-value fade-in-left">
                 <span className="card-data-style">
                   {this.state.countyData.deaths.toLocaleString()}
                 </span>
@@ -162,7 +162,7 @@ class DataSection extends React.Component {
                   <GrStatusCritical className="icon-styled" size="1.5rem" />
                 </div>
               </div>
-              <div className="card-value">
+              <div className="card-value fade-in-left">
                 <span className="card-data-style">
                   {this.state.countyData.posNew.toLocaleString()}
                 </span>
@@ -178,7 +178,7 @@ class DataSection extends React.Component {
                   <GrStatusGood className="icon-styled" size="1.5rem" />
                 </div>
               </div>
-              <div className="card-value">
+              <div className="card-value fade-in-left">
                 <span className="card-data-style">
                   {this.state.countyData.negNew.toLocaleString()}
                 </span>
@@ -194,7 +194,7 @@ class DataSection extends React.Component {
                   <GrBarChart className="icon-styled" size="1.5rem" />
                 </div>
               </div>
-              <div className="card-value">
+              <div className="card-value fade-in-left">
                 <span className="card-data-style">
                   {this.state.countyData.newTests.toLocaleString()}
                 </span>

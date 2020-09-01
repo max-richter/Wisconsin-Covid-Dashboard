@@ -6,14 +6,14 @@ class InfoSection extends React.Component {
     return (
       <div className="row justify-content-center row-styled footer-container fade-in">
         <div className="col-md-5">
-          <div className="card grid-card">
+          <div className="card grid-card info-card-styling">
             <div className="card-heading">
               <div className="card-title-style">
                 Wisconsin COVID-19 Resources{" "}
                 <GrResources className="icon-styled" size="1.5rem" />
               </div>
             </div>
-            <div className="card-value">
+            <div className="card-value fade-in-left">
               <span className="card-text-style">
                 <ul>Have a question but don't want to talk to someone? Text COVID19 to 211-211 
                   <GrPhone className="link-icon-style" size="1.5rem"/></ul>
