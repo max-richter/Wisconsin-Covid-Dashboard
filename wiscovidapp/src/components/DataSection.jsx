@@ -192,7 +192,7 @@ class DataSection extends React.Component {
             <div className="card grid-card">
               <div className="card-heading">
                 <div className="card-title-style">
-                  Tests Adminstered (Daily){" "}
+                  Tests Administered (Daily){" "}
                   <GrBarChart className="icon-styled" size="1.5rem" />
                 </div>
               </div>
