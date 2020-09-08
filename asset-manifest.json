@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Wisconsin-Covid-Dashboard/static/css/main.0fbef9f3.chunk.css",
-    "main.js": "/Wisconsin-Covid-Dashboard/static/js/main.ac0905bc.chunk.js",
-    "main.js.map": "/Wisconsin-Covid-Dashboard/static/js/main.ac0905bc.chunk.js.map",
+    "main.js": "/Wisconsin-Covid-Dashboard/static/js/main.c0f7587e.chunk.js",
+    "main.js.map": "/Wisconsin-Covid-Dashboard/static/js/main.c0f7587e.chunk.js.map",
     "runtime-main.js": "/Wisconsin-Covid-Dashboard/static/js/runtime-main.4370df6b.js",
     "runtime-main.js.map": "/Wisconsin-Covid-Dashboard/static/js/runtime-main.4370df6b.js.map",
     "static/css/2.ceb79488.chunk.css": "/Wisconsin-Covid-Dashboard/static/css/2.ceb79488.chunk.css",
     "static/js/2.7944675d.chunk.js": "/Wisconsin-Covid-Dashboard/static/js/2.7944675d.chunk.js",
     "static/js/2.7944675d.chunk.js.map": "/Wisconsin-Covid-Dashboard/static/js/2.7944675d.chunk.js.map",
     "index.html": "/Wisconsin-Covid-Dashboard/index.html",
-    "precache-manifest.fc25bd44be35a8ad3a73ac89279fe2ce.js": "/Wisconsin-Covid-Dashboard/precache-manifest.fc25bd44be35a8ad3a73ac89279fe2ce.js",
+    "precache-manifest.34855f2f880805b24656dc8d3f06332c.js": "/Wisconsin-Covid-Dashboard/precache-manifest.34855f2f880805b24656dc8d3f06332c.js",
     "service-worker.js": "/Wisconsin-Covid-Dashboard/service-worker.js",
     "static/css/2.ceb79488.chunk.css.map": "/Wisconsin-Covid-Dashboard/static/css/2.ceb79488.chunk.css.map",
     "static/css/main.0fbef9f3.chunk.css.map": "/Wisconsin-Covid-Dashboard/static/css/main.0fbef9f3.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.ceb79488.chunk.css",
     "static/js/2.7944675d.chunk.js",
     "static/css/main.0fbef9f3.chunk.css",
-    "static/js/main.ac0905bc.chunk.js"
+    "static/js/main.c0f7587e.chunk.js"
   ]
 }

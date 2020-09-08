@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "72e6b10d500dad0b0ceee01c5a14d4e5",
+    "revision": "8050506a484a8a29018e50dc8d0256d5",
     "url": "/Wisconsin-Covid-Dashboard/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Wisconsin-Covid-Dashboard/static/css/2.ceb79488.chunk.css"
   },
   {
-    "revision": "17d5d440c4492d54a309",
+    "revision": "deaa086d3cecca4ed061",
     "url": "/Wisconsin-Covid-Dashboard/static/css/main.0fbef9f3.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Wisconsin-Covid-Dashboard/static/js/2.7944675d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "17d5d440c4492d54a309",
-    "url": "/Wisconsin-Covid-Dashboard/static/js/main.ac0905bc.chunk.js"
+    "revision": "deaa086d3cecca4ed061",
+    "url": "/Wisconsin-Covid-Dashboard/static/js/main.c0f7587e.chunk.js"
   },
   {
     "revision": "cafa2fd799ff3498418f",

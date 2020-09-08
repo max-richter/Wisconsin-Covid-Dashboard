@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Wisconsin-Covid-Dashboard/precache-manifest.fc25bd44be35a8ad3a73ac89279fe2ce.js"
+  "/Wisconsin-Covid-Dashboard/precache-manifest.34855f2f880805b24656dc8d3f06332c.js"
 );
 
 self.addEventListener('message', (event) => {
