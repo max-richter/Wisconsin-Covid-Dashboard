@@ -1,6 +1,10 @@
 import React from "react";
 import {GrResources, GrLink, GrPhone} from 'react-icons/gr';
 
+/**
+ * This class contains all of the static resource links
+ * NOTE: has no state and doesn't use any props
+ */
 class InfoSection extends React.Component {
   render() {
     return (

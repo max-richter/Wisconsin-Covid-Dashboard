@@ -9,7 +9,10 @@ import {
   GrStatusGood,
   GrBarChart,
 } from "react-icons/gr";
-
+/**
+ * class contains the core dashboard statistics
+ * fetches data from DHS API and displays it
+ */
 class DataSection extends React.Component {
   // keep track of object's state
   state = {
@@ -88,7 +91,6 @@ class DataSection extends React.Component {
             countyData["testNew"] = respData.TEST_NEW;
             countyData["name"] = respData.NAME;
             countyData["newTests"] = respData.TEST_NEW;
-
             return { countyData };
           });
         })
