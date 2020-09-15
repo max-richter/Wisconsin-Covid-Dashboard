@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This tool allows users to retrieve the latest COVID-19 data/statistics from each county in Wisconsin.
 
 ## Available Scripts
 
